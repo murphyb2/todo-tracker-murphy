@@ -7,6 +7,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const { isAuthenticated, getAuthState } = useContext(GlobalContext);
 
   useEffect(() => {
+    console.log("getting auth state");
     getAuthState();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

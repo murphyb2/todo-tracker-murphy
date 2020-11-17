@@ -7,7 +7,7 @@ exports.getTodos = async (req, res, next) => {
   try {
     const todos = await Todo.find({
       owner: req.user.id,
-    }).lean();
+    });
 
     console.log("user todos", todos);
 

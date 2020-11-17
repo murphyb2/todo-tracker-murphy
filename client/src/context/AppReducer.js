@@ -24,7 +24,8 @@ export default (state, action) => {
     case "SET_AUTH_STATE":
       return {
         ...state,
-        isAuthenticated: action.payload,
+        isAuthenticated: action.payload.authenticated,
+        todos: action.payload.todos,
       };
     default:
       return state;

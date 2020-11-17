@@ -1,14 +1,28 @@
 const express = require("express");
 const router = express.Router();
-
 const passport = require("passport");
+
+const Todo = require("../models/Todo");
 
 /* Auth status */
 // @desc Auth status of session
 // @route GET /auth/status
-router.get("/status", (req, res) => {
+router.get("/status", async (req, res) => {
+  let todos = [];
+  if (req.isAuthenticated()) {
+    // Get the todos for this user
+    try {
+      todos = await Todo.find({
+        owner: req.user.id,
+      });
+    } catch (err) {
+      console.log(err);
+      todos = [];
+    }
+  }
   res.status(200).json({
     authenticated: req.isAuthenticated(),
+    todos,
   });
 });
 

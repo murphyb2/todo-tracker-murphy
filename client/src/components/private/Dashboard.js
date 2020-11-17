@@ -5,16 +5,12 @@ import TodoList from "./TodoList";
 import { GlobalContext } from "../../context/GlobalState";
 
 const Dashboard = () => {
-  const { todos, getTodos } = useContext(GlobalContext);
-  useEffect(() => {
-    getTodos();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  console.log("dashboard rendering");
   return (
     <div>
       <Sidebar />
       Dashboard
-      <TodoList todos={todos} />
+      <TodoList />
       <AddTodo />
     </div>
   );

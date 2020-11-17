@@ -22,9 +22,10 @@ export const GlobalProvider = ({ children }) => {
   async function getAuthState() {
     try {
       const res = await axios.get("/auth/status");
+      console.log("auth state res", res);
       dispatch({
         type: "SET_AUTH_STATE",
-        payload: res.data.authenticated,
+        payload: res.data,
       });
     } catch (err) {
       console.log(err);
