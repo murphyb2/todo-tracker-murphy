@@ -9,7 +9,9 @@ const Todo = require("../models/Todo");
 // @route GET /auth/status
 router.get("/status", async (req, res) => {
   let todos = [];
-  if (req.isAuthenticated()) {
+  const authenticated = req.isAuthenticated();
+
+  if (authenticated) {
     // Get the todos for this user
     try {
       todos = await Todo.find({
@@ -21,8 +23,9 @@ router.get("/status", async (req, res) => {
     }
   }
   res.status(200).json({
-    authenticated: req.isAuthenticated(),
+    authenticated,
     todos,
+    user: authenticated ? req.user : {},
   });
 });
 

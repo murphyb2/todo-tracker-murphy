@@ -26,6 +26,7 @@ export default (state, action) => {
         ...state,
         isAuthenticated: action.payload.authenticated,
         todos: action.payload.todos,
+        profile: action.payload.user,
       };
     default:
       return state;
