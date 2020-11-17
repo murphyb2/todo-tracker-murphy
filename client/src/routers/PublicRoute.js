@@ -4,10 +4,10 @@ import { GlobalContext } from "../context/GlobalState";
 
 const PublicRoute = ({ component: Component, ...rest }) => {
   const { isAuthenticated, getAuthState } = useContext(GlobalContext);
-  console.log("isAuthenticated", isAuthenticated);
 
   useEffect(() => {
     getAuthState();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

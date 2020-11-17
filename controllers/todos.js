@@ -25,9 +25,12 @@ exports.getTodos = async (req, res, next) => {
 // @access  Public
 exports.addTodo = async (req, res, next) => {
   try {
-    const { text } = req.body;
+    const newTodo = {
+      ...req.body,
+      owner: req.user.id,
+    };
 
-    const todo = await Todo.create(req.body);
+    const todo = await Todo.create(newTodo);
 
     return res.status(201).json({
       success: true,

@@ -35,7 +35,7 @@ export const GlobalProvider = ({ children }) => {
   async function getTodos() {
     try {
       const res = await axios.get("/api/v1/todos");
-
+      console.log("get todos res", res);
       dispatch({
         type: "GET_TODOS",
         payload: res.data.data,
@@ -75,12 +75,14 @@ export const GlobalProvider = ({ children }) => {
 
     try {
       const res = await axios.post("/api/v1/todos", todo, config);
+      console.log(res);
 
       dispatch({
         type: "ADD_TODO",
         payload: res.data.data,
       });
     } catch (err) {
+      console.log(err);
       dispatch({
         type: "TODO_ERROR",
         payload: err.response.data.error,

@@ -4,8 +4,6 @@ import { GlobalContext } from "../context/GlobalState";
 export const Todo = ({ todo }) => {
   const { deleteTodo } = useContext(GlobalContext);
 
-  const sign = todo.amount < 0 ? "-" : "+";
-
   return (
     <li>
       {todo.text}{" "}

@@ -1,7 +1,15 @@
 import React from "react";
+import Sidebar from "./Sidebar";
+import AddTodo from "./AddTodo";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <Sidebar />
+      Dashboard
+      <AddTodo />
+    </div>
+  );
 };
 
 export default Dashboard;

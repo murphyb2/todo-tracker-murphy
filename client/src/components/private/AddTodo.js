@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState";
 
-export const AddTodo = () => {
+const AddTodo = () => {
   const [text, setText] = useState("");
 
   const { addTodo } = useContext(GlobalContext);
@@ -34,3 +34,5 @@ export const AddTodo = () => {
     </>
   );
 };
+
+export default AddTodo;
