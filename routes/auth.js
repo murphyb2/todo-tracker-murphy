@@ -7,7 +7,6 @@ const passport = require("passport");
 // @desc Auth status of session
 // @route GET /auth/status
 router.get("/status", (req, res) => {
-  console.log(req.isAuthenticated());
   res.status(200).json({
     authenticated: req.isAuthenticated(),
   });
