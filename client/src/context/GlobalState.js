@@ -22,7 +22,6 @@ export const GlobalProvider = ({ children }) => {
   async function getAuthState() {
     try {
       const res = await axios.get("/auth/status");
-      console.log("auth state res", res);
       dispatch({
         type: "SET_AUTH_STATE",
         payload: res.data,
@@ -36,7 +35,6 @@ export const GlobalProvider = ({ children }) => {
   async function getTodos() {
     try {
       const res = await axios.get("/api/v1/todos");
-      console.log("get todos res", res);
       dispatch({
         type: "GET_TODOS",
         payload: res.data.data,
@@ -76,7 +74,6 @@ export const GlobalProvider = ({ children }) => {
 
     try {
       const res = await axios.post("/api/v1/todos", todo, config);
-      console.log(res);
 
       dispatch({
         type: "ADD_TODO",

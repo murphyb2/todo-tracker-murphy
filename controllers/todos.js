@@ -9,8 +9,6 @@ exports.getTodos = async (req, res, next) => {
       owner: req.user.id,
     });
 
-    console.log("user todos", todos);
-
     return res.status(200).json({
       success: true,
       count: todos.length,

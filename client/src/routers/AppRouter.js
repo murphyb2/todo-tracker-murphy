@@ -8,7 +8,6 @@ import LoginPage from "../components/LoginPage";
 import Dashboard from "../components/private/Dashboard";
 
 const AppRouter = () => {
-  console.log("app router rendering");
   return (
     <Router>
       <Switch>

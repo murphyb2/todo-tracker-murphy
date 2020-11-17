@@ -5,7 +5,6 @@ import TodoList from "./TodoList";
 import { GlobalContext } from "../../context/GlobalState";
 
 const Dashboard = () => {
-  console.log("dashboard rendering");
   return (
     <div>
       <Sidebar />
