@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { numberWithCommas } from "../utils/format";
 
 export const Todo = ({ todo }) => {
   const { deleteTodo } = useContext(GlobalContext);

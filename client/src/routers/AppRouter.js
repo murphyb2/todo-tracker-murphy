@@ -1,25 +1,18 @@
-import React, { useContext, useEffect } from "react";
-import { Router, Route, Switch } from "react-router-dom";
-import { createBrowserHistory } from "history";
-import { GlobalContext } from "../context/GlobalState";
+import React from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
 
 import LoginPage from "../components/LoginPage";
 import Dashboard from "../components/private/Dashboard";
 
 const AppRouter = () => {
-  const { isAuthenticated, getAuthState } = useContext(GlobalContext);
-  console.log("isAuthenticated", isAuthenticated);
-
-  useEffect(() => {
-    getAuthState();
-  }, []);
-  const history = createBrowserHistory();
-
   return (
-    <Router history={history}>
+    <Router>
       <Switch>
-        <Route path="/" exact={true} component={LoginPage} />
-        <Route path="/dashboard" exact={true} component={Dashboard} />
+        <PublicRoute path="/" exact={true} component={LoginPage} />
+        <PrivateRoute path="/dashboard" exact={true} component={Dashboard} />
       </Switch>
     </Router>
   );
