@@ -5,7 +5,11 @@ const Todo = require("../models/Todo");
 // @access  Public
 exports.getTodos = async (req, res, next) => {
   try {
-    const todos = await Todo.find();
+    const todos = await Todo.find({
+      owner: req.user.id,
+    }).lean();
+
+    console.log("user todos", todos);
 
     return res.status(200).json({
       success: true,
