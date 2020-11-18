@@ -1,7 +1,21 @@
 $enable-shadows: true;
-@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 $enable-responsive-font-sizes: true;
+$font-family-base: // Safari for OS X and iOS (San Francisco)
+  -apple-system,
+  // Chrome < 56 for OS X (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Roboto",
+  // Android
+  "Roboto",
+  // Basic web fallback
+  "Helvetica Neue",
+  Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "~react-pro-sidebar/dist/scss/styles.scss";
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");

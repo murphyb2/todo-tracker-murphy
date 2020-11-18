@@ -8,6 +8,7 @@ const initialState = {
   error: null,
   loading: true,
   isAuthenticated: false,
+  profile: {},
 };
 
 // Create context
@@ -95,6 +96,7 @@ export const GlobalProvider = ({ children }) => {
         error: state.error,
         loading: state.loading,
         isAuthenticated: state.isAuthenticated,
+        profile: state.profile,
         getTodos,
         deleteTodo,
         addTodo,
