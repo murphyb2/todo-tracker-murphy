@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { GlobalContext } from "../../../context/GlobalState";
 
 import {
@@ -15,6 +16,8 @@ import {
   faSignOutAlt,
   faChevronLeft,
   faChevronRight,
+  faPlus,
+  faList,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ toggled, handleSetToggled }) => {
@@ -23,17 +26,17 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
   const [collapsedIcon, setCollapsedIcon] = useState(faChevronRight);
 
   const headerContent = (
-    <div className="d-flex justify-content-around p-3">
+    <div className="d-flex flex-column justify-content-around p-3">
+      <img
+        src={profile.image}
+        alt={profile.displayName}
+        className="img-thumbnail rounded p-0 m-auto"
+      />
       {!collapsed && (
         <div>
           <h4 className="p-2 text-center">Welcome {profile.firstName}!</h4>
         </div>
       )}
-      <img
-        src={profile.image}
-        alt={profile.displayName}
-        className="img-thumbnail rounded p-0"
-      />
     </div>
   );
 
@@ -49,7 +52,7 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
 
   return (
     <ProSidebar
-      collapsed={collapsed}
+      // collapsed={collapsed}
       toggled={toggled}
       onToggle={handleSetToggled}
       breakPoint="md"
@@ -62,11 +65,18 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
         >
           Collapse
         </MenuItem>
-        <MenuItem icon={<FontAwesomeIcon icon={faGem} />}>Dashboard</MenuItem>
-        <SubMenu title="Components" icon={<FontAwesomeIcon icon={faHeart} />}>
-          <MenuItem>Component 1</MenuItem>
-          <MenuItem>Component 2</MenuItem>
-        </SubMenu>
+        <MenuItem icon={<FontAwesomeIcon icon={faGem} />}>
+          Dashboard
+          <Link to="/dashboard" />
+        </MenuItem>
+        <MenuItem icon={<FontAwesomeIcon icon={faPlus} />}>
+          Add a ToDo
+          <Link to="/add" />
+        </MenuItem>
+        <MenuItem icon={<FontAwesomeIcon icon={faList} />}>
+          All ToDos
+          <Link to="/todos" />
+        </MenuItem>
         <MenuItem icon={<FontAwesomeIcon icon={faSignOutAlt} />}>
           <a href="/auth/logout">Logout</a>
         </MenuItem>

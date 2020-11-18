@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { GlobalContext } from "../../context/GlobalState";
 
-const AddTodo = () => {
+const AddTodo = ({ handleSetToggled }) => {
   const [text, setText] = useState("");
 
   const { addTodo } = useContext(GlobalContext);
@@ -18,6 +20,11 @@ const AddTodo = () => {
 
   return (
     <>
+      <FontAwesomeIcon
+        className="d-md-none"
+        icon={faBars}
+        onClick={() => handleSetToggled(true)}
+      />
       <h3>Add new todo</h3>
       <form onSubmit={onSubmit}>
         <div className="form-control">
