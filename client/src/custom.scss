@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
-$enable-shadows: true;
+// Custom css
+body {
+  height: 100vh;
+}
 
+// Bootstrap variable overrides
+// $modal-backdrop-bg: #9c88ff;
+// $modal-content-color: #9c88ff;
+$enable-shadows: true;
 $enable-responsive-font-sizes: true;
 $font-family-base: // Safari for OS X and iOS (San Francisco)
   -apple-system,
@@ -17,6 +24,9 @@ $font-family-base: // Safari for OS X and iOS (San Francisco)
   // Emoji fonts
   "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// React Pro Sidebar variable overrides
+$sidebar-bg-color: #1d1d1d !default;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "~react-pro-sidebar/dist/scss/styles.scss";

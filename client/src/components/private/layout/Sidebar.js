@@ -59,7 +59,7 @@ const Sidebar = () => {
           <MenuItem>Component 2</MenuItem>
         </SubMenu>
         <MenuItem icon={<FontAwesomeIcon icon={faSignOutAlt} />}>
-          Logout
+          <a href="/auth/logout">Logout</a>
         </MenuItem>
       </Menu>
     </ProSidebar>
