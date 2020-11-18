@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 
 export const Layout = ({ children }) => {
+  const [toggled, setToggled] = useState(false);
+
+  const handleSetToggled = (value) => setToggled(value);
+
   return (
-    <div className="d-flex flex-row" style={{ height: "100vh" }}>
-      <div>
-        <Sidebar />
+    <>
+      <div className="d-flex flex-row" style={{ height: "100vh" }}>
+        <Sidebar toggled={toggled} handleSetToggled={handleSetToggled} />
+        {React.Children.map(children, (child) => {
+          // checking isValidElement is the safe way and avoids a typescript error too
+          const props = { handleSetToggled };
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, props);
+          }
+          return child;
+        })}
       </div>
-      <div>{children}</div>
-    </div>
+    </>
   );
 };

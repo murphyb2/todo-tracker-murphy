@@ -17,19 +17,23 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Sidebar = () => {
+const Sidebar = ({ toggled, handleSetToggled }) => {
   const { profile } = useContext(GlobalContext);
-  console.log(profile);
-  const [collapsed, setCollapsed] = useState(false);
-  const [collapsedIcon, setCollapsedIcon] = useState(faChevronLeft);
+  const [collapsed, setCollapsed] = useState(true);
+  const [collapsedIcon, setCollapsedIcon] = useState(faChevronRight);
 
-  const headerContent = collapsed ? (
-    <div className="d-flex justify-content-around py-3">
-      <FontAwesomeIcon icon={faGem} />
-    </div>
-  ) : (
-    <div>
-      <h4 className="p-2 text-center">Welcome {profile.firstName}!</h4>
+  const headerContent = (
+    <div className="d-flex justify-content-around p-3">
+      {!collapsed && (
+        <div>
+          <h4 className="p-2 text-center">Welcome {profile.firstName}!</h4>
+        </div>
+      )}
+      <img
+        src={profile.image}
+        alt={profile.displayName}
+        className="img-thumbnail rounded p-0"
+      />
     </div>
   );
 
@@ -44,7 +48,12 @@ const Sidebar = () => {
   };
 
   return (
-    <ProSidebar collapsed={collapsed}>
+    <ProSidebar
+      collapsed={collapsed}
+      toggled={toggled}
+      onToggle={handleSetToggled}
+      breakPoint="md"
+    >
       <SidebarHeader>{headerContent}</SidebarHeader>
       <Menu iconShape="square">
         <MenuItem
