@@ -3,7 +3,7 @@ import { GlobalProvider } from "./context/GlobalState";
 
 import AppRouter from "./routers/AppRouter";
 
-import "./App.css";
+import "./custom.scss";
 
 const App = () => {
   return (

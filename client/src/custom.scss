@@ -1,0 +1,7 @@
+$enable-shadows: true;
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+$enable-responsive-font-sizes: true;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "~react-pro-sidebar/dist/scss/styles.scss";

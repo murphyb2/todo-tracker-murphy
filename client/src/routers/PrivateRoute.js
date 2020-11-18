@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
 import Header from "../components/private/Header";
+import { Layout } from "../components/private/layout";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { isAuthenticated, getAuthState } = useContext(GlobalContext);
@@ -16,10 +17,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       component={(props) =>
         isAuthenticated ? (
-          <div>
+          <Layout>
             <Header />
             <Component {...props} />
-          </div>
+          </Layout>
         ) : (
           <Redirect to="/" />
         )
