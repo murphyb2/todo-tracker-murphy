@@ -54,7 +54,7 @@ app.use(`/auth`, authRoutes);
 // Todos
 app.use(`${apiPrefix}/todos`, todoRoutes);
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV !== "development") {
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) =>
@@ -66,7 +66,5 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(
   PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
-  )
+  console.log(`Server running in ${PORT} mode on port ${PORT}`.yellow.bold)
 );
