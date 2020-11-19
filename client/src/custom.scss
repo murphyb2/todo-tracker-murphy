@@ -14,28 +14,30 @@ body {
 }
 
 .todo-modal-header {
-  background-color: #855be6;
+  background-color: $todo-primary;
   color: white;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
 }
 .todo-title {
   font-weight: 900;
 }
 .todo-card-header {
-  background-color: #855be6;
   color: white;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
 }
 .todo-card-body {
   padding: 0.25rem;
   border-radius: 0.25rem;
 }
+.todo-active-menuitem {
+  background-color: darken($todo-primary, 4);
+}
+.btn-primary {
+  background-color: $todo-primary !important;
+}
 
 // Bootstrap variable overrides
 // $modal-backdrop-bg: #9c88ff;
 // $modal-content-color: #9c88ff;
+$card-cap-bg: $todo-primary;
 $enable-shadows: true;
 $enable-responsive-font-sizes: true;
 $font-family-base: // Safari for OS X and iOS (San Francisco)

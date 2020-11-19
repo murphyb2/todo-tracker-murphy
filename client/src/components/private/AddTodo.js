@@ -1,13 +1,11 @@
 import React, { useState, useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { GlobalContext } from "../../context/GlobalState";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-const AddTodo = ({ handleSetToggled }) => {
+const AddTodo = () => {
   const [text, setText] = useState("");
 
   const { addTodo } = useContext(GlobalContext);
@@ -25,12 +23,7 @@ const AddTodo = ({ handleSetToggled }) => {
 
   return (
     <div className="h-100 w-100">
-      <FontAwesomeIcon
-        className="d-md-none"
-        icon={faBars}
-        onClick={() => handleSetToggled(true)}
-      />
-      <Container>
+      <Container className="mt-3">
         <Form className="mx-auto" onSubmit={onSubmit}>
           <h4>Add new todo</h4>
           <Form.Group controlId="todoText">
