@@ -19,6 +19,10 @@ const TodoSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  listGroup: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "TodoList",
+  },
 });
 
 module.exports = mongoose.model("Todo", TodoSchema);

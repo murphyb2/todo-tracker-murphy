@@ -28,41 +28,53 @@ const TodoDetail = () => {
 
   return (
     <Container className="h-100 w-100">
-      <DeleteTodo
-        show={showConfirmDelete}
-        confirmDelete={handleDelete}
-        handleCancel={() => setShowConfirmDelete(false)}
-      />
-      <Link to="/">
-        <Button>Go Home</Button>
-      </Link>
-      <Card className="shadow">
-        <Card.Header>
-          <h1>{todo.text}</h1>
-        </Card.Header>
-        <Card.Body>
-          <ListGroup>
-            <ListGroup.Item>
-              Date added: {moment(todo.createdAt).format("MMMM Do, YYYY")}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              Completed: {todo.completed ? "All done!" : "Nope!"}{" "}
-              <FontAwesomeIcon
-                icon={todo.completed ? faCalendarCheck : faExclamationCircle}
-              />
-            </ListGroup.Item>
-          </ListGroup>
-        </Card.Body>
-        <Card.Footer className="bg-secondary text-center">
-          <Card.Title>Actions</Card.Title>
-          <ButtonGroup>
-            <Button>Edit</Button>
-            <Button onClick={() => setShowConfirmDelete(true)} variant="danger">
-              Delete
-            </Button>
-          </ButtonGroup>
-        </Card.Footer>
-      </Card>
+      {!!!todo && (
+        <h5 className="text-center mt-3">Hmm.. can't find that todo</h5>
+      )}
+      {!!todo && (
+        <>
+          <DeleteTodo
+            show={showConfirmDelete}
+            confirmDelete={handleDelete}
+            handleCancel={() => setShowConfirmDelete(false)}
+          />
+          <Link to="/">
+            <Button>Go Home</Button>
+          </Link>
+          <Card className="shadow">
+            <Card.Header>
+              <h1>{todo.text}</h1>
+            </Card.Header>
+            <Card.Body>
+              <ListGroup>
+                <ListGroup.Item>
+                  Date added: {moment(todo.createdAt).format("MMMM Do, YYYY")}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Completed: {todo.completed ? "All done!" : "Nope!"}{" "}
+                  <FontAwesomeIcon
+                    icon={
+                      todo.completed ? faCalendarCheck : faExclamationCircle
+                    }
+                  />
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+            <Card.Footer className="bg-secondary text-center">
+              <Card.Title>Actions</Card.Title>
+              <ButtonGroup>
+                <Button>Edit</Button>
+                <Button
+                  onClick={() => setShowConfirmDelete(true)}
+                  variant="danger"
+                >
+                  Delete
+                </Button>
+              </ButtonGroup>
+            </Card.Footer>
+          </Card>
+        </>
+      )}
     </Container>
   );
 };

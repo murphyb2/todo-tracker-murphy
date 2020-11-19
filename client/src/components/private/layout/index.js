@@ -36,14 +36,16 @@ export const Layout = ({ children }) => {
           toggled={toggled}
           handleSetToggled={handleSetToggled}
         />
-        {React.Children.map(children, (child) => {
-          // checking isValidElement is the safe way and avoids a typescript error too
-          const props = { handleSetToggled };
-          if (React.isValidElement(child)) {
-            return React.cloneElement(child, props);
-          }
-          return child;
-        })}
+        <div className="m-3 h-100 w-100">
+          {React.Children.map(children, (child) => {
+            // checking isValidElement is the safe way and avoids a typescript error too
+            const props = { handleSetToggled };
+            if (React.isValidElement(child)) {
+              return React.cloneElement(child, props);
+            }
+            return child;
+          })}
+        </div>
       </div>
     </>
   );

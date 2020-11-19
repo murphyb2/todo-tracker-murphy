@@ -3,12 +3,14 @@ const router = express.Router();
 const passport = require("passport");
 
 const Todo = require("../models/Todo");
+const TodoList = require("../models/TodoList");
 
 /* Auth status */
 // @desc Auth status of session
 // @route GET /auth/status
 router.get("/status", async (req, res) => {
   let todos = [];
+  let todoLists = [];
   const authenticated = req.isAuthenticated();
 
   if (authenticated) {
@@ -17,14 +19,19 @@ router.get("/status", async (req, res) => {
       todos = await Todo.find({
         owner: req.user.id,
       });
+      todoLists = await TodoList.find({
+        owner: req.user.id,
+      });
     } catch (err) {
       console.log(err);
       todos = [];
+      todoLists: [];
     }
   }
   res.status(200).json({
     authenticated,
     todos,
+    todoLists,
     user: authenticated ? req.user : {},
   });
 });

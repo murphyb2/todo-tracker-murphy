@@ -56,10 +56,13 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
           Add a ToDo
           <Link to="/add" />
         </MenuItem>
-        {/* <MenuItem icon={<FontAwesomeIcon icon={faList} />}>
-          All ToDos
-          <Link to="/todos" />
-        </MenuItem> */}
+        <MenuItem
+          className={pathname === "/todos/lists" ? "todo-active-menuitem" : ""}
+          icon={<FontAwesomeIcon icon={faList} />}
+        >
+          ToDo Lists
+          <Link to="/todos/lists" />
+        </MenuItem>
       </Menu>
       <SidebarFooter>
         <Menu iconShape="round">

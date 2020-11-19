@@ -24,8 +24,22 @@ export default (state, action) => {
         ],
         todos: state.todos.filter((todo) => todo._id !== action.payload.id),
       };
+    case "DELETE_TODO_LIST":
+      return {
+        ...state,
+        messages: [
+          ...state.messages,
+          {
+            success: action.payload.success,
+            message: action.payload.msg,
+            id: action.payload.id,
+          },
+        ],
+        todoLists: state.todoLists.filter(
+          (list) => list._id !== action.payload.id
+        ),
+      };
     case "ADD_TODO":
-      console.log(action.payload);
       return {
         ...state,
         messages: [
@@ -38,17 +52,38 @@ export default (state, action) => {
         ],
         todos: [...state.todos, action.payload.data],
       };
+    case "ADD_TODO_LIST":
+      return {
+        ...state,
+        messages: [
+          ...state.messages,
+          {
+            success: action.payload.success,
+            message: action.payload.msg,
+            id: action.payload.data._id,
+          },
+        ],
+        todoLists: [...state.todoLists, action.payload.data],
+      };
     case "TODO_ERROR":
       return {
         ...state,
         success: false,
-        error: action.payload,
+        messages: [
+          ...state.messages,
+          {
+            success: false,
+            message: action.payload.msg[0],
+            id: action.payload.msg[0],
+          },
+        ],
       };
     case "SET_AUTH_STATE":
       return {
         ...state,
         isAuthenticated: action.payload.authenticated,
         todos: action.payload.todos,
+        todoLists: action.payload.todoLists,
         profile: action.payload.user,
       };
     default:
