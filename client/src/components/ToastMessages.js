@@ -22,6 +22,7 @@ export const ToastMessages = () => {
             key={msg.id}
             style={{
               background: msg.success ? "seagreen" : "red",
+              width: "33vw",
             }}
             className="mt-2 mr-2"
             onClose={() => handleToastClose(msg.id)}
@@ -31,12 +32,12 @@ export const ToastMessages = () => {
             animation
             transition={Fade}
           >
-            <Toast.Body>
+            <Toast.Body className="d-flex flex-nowrap">
               <FontAwesomeIcon
-                className="mr-1"
+                className="mr-1 text-light"
                 icon={msg.success ? faCheckDouble : faTimes}
               />
-              {msg.message}
+              <div className="text-light">{msg.message}</div>
             </Toast.Body>
           </Toast>
         ))}
