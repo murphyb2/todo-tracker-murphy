@@ -11,7 +11,6 @@ const AddTodo = () => {
   const { addTodo } = useContext(GlobalContext);
 
   const onSubmit = (e) => {
-    console.log("onsubmit");
     e.preventDefault();
 
     const newTodo = {

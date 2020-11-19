@@ -20,9 +20,6 @@ body {
 .todo-title {
   font-weight: 900;
 }
-.todo-card-header {
-  color: white;
-}
 .todo-card-body {
   padding: 0.25rem;
   border-radius: 0.25rem;
@@ -30,14 +27,24 @@ body {
 .todo-active-menuitem {
   background-color: darken($todo-primary, 4);
 }
+
 .btn-primary {
   background-color: $todo-primary !important;
+  border-color: $todo-primary !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-color: lighten($todo-primary, 5) !important;
 }
 
 // Bootstrap variable overrides
-// $modal-backdrop-bg: #9c88ff;
-// $modal-content-color: #9c88ff;
+// Cards
 $card-cap-bg: $todo-primary;
+$card-cap-color: white !important;
+
 $enable-shadows: true;
 $enable-responsive-font-sizes: true;
 $font-family-base: // Safari for OS X and iOS (San Francisco)
