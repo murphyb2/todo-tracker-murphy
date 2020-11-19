@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../../context/GlobalState";
 
@@ -6,7 +6,7 @@ import {
   ProSidebar,
   Menu,
   MenuItem,
-  SubMenu,
+  SidebarFooter,
   SidebarHeader,
 } from "react-pro-sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,16 +14,12 @@ import {
   faHeart,
   faGem,
   faSignOutAlt,
-  faChevronLeft,
-  faChevronRight,
   faPlus,
   faList,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ toggled, handleSetToggled }) => {
   const { profile } = useContext(GlobalContext);
-  const [collapsed, setCollapsed] = useState(true);
-  const [collapsedIcon, setCollapsedIcon] = useState(faChevronRight);
 
   const headerContent = (
     <div className="d-flex flex-column justify-content-around p-3">
@@ -32,39 +28,16 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
         alt={profile.displayName}
         className="img-thumbnail rounded p-0 m-auto"
       />
-      {!collapsed && (
-        <div>
-          <h4 className="p-2 text-center">Welcome {profile.firstName}!</h4>
-        </div>
-      )}
+      <div>
+        <h4 className="p-2 text-center">Welcome {profile.firstName}!</h4>
+      </div>
     </div>
   );
 
-  const handleSetCollapsed = () => {
-    if (collapsed) {
-      setCollapsedIcon(faChevronLeft);
-      setCollapsed(false);
-    } else {
-      setCollapsedIcon(faChevronRight);
-      setCollapsed(true);
-    }
-  };
-
   return (
-    <ProSidebar
-      // collapsed={collapsed}
-      toggled={toggled}
-      onToggle={handleSetToggled}
-      breakPoint="md"
-    >
+    <ProSidebar toggled={toggled} onToggle={handleSetToggled} breakPoint="md">
       <SidebarHeader>{headerContent}</SidebarHeader>
       <Menu iconShape="square">
-        <MenuItem
-          onClick={handleSetCollapsed}
-          icon={<FontAwesomeIcon icon={collapsedIcon} />}
-        >
-          Collapse
-        </MenuItem>
         <MenuItem icon={<FontAwesomeIcon icon={faGem} />}>
           Dashboard
           <Link to="/dashboard" />
@@ -77,10 +50,14 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
           All ToDos
           <Link to="/todos" />
         </MenuItem>
-        <MenuItem icon={<FontAwesomeIcon icon={faSignOutAlt} />}>
-          <a href="/auth/logout">Logout</a>
-        </MenuItem>
       </Menu>
+      <SidebarFooter>
+        <Menu>
+          <MenuItem icon={<FontAwesomeIcon icon={faSignOutAlt} />}>
+            <a href="/auth/logout">Logout</a>
+          </MenuItem>
+        </Menu>
+      </SidebarFooter>
     </ProSidebar>
   );
 };
