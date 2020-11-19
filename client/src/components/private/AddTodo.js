@@ -5,6 +5,7 @@ import { GlobalContext } from "../../context/GlobalState";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 const AddTodo = ({ handleSetToggled }) => {
   const [text, setText] = useState("");
@@ -23,27 +24,29 @@ const AddTodo = ({ handleSetToggled }) => {
   };
 
   return (
-    <>
+    <div className="h-100 w-100">
       <FontAwesomeIcon
         className="d-md-none"
         icon={faBars}
         onClick={() => handleSetToggled(true)}
       />
-      <Form className="mx-auto" onSubmit={onSubmit}>
-        <h4>Add new todo</h4>
-        <Form.Group controlId="todoText">
-          <Form.Label>New ToDo</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter a new ToDo..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        </Form.Group>
+      <Container>
+        <Form className="mx-auto" onSubmit={onSubmit}>
+          <h4>Add new todo</h4>
+          <Form.Group controlId="todoText">
+            <Form.Label>New ToDo</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter a new ToDo..."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </Form.Group>
 
-        <Button type="submit">Add todo</Button>
-      </Form>
-    </>
+          <Button type="submit">Add todo</Button>
+        </Form>
+      </Container>
+    </div>
   );
 };
 

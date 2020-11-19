@@ -11,7 +11,6 @@ import {
 } from "react-pro-sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHeart,
   faGem,
   faSignOutAlt,
   faPlus,
@@ -29,7 +28,7 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
         className="img-thumbnail rounded p-0 m-auto"
       />
       <div>
-        <h4 className="p-2 text-center">Welcome {profile.firstName}!</h4>
+        <h3 className="p-2 text-center">{profile.firstName}!</h3>
       </div>
     </div>
   );
@@ -52,7 +51,7 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
         </MenuItem>
       </Menu>
       <SidebarFooter>
-        <Menu>
+        <Menu iconShape="square">
           <MenuItem icon={<FontAwesomeIcon icon={faSignOutAlt} />}>
             <a href="/auth/logout">Logout</a>
           </MenuItem>

@@ -8,7 +8,7 @@ const TodoList = ({ handleSetToggled }) => {
   const { todos } = useContext(GlobalContext);
 
   return (
-    <>
+    <div className="h-100 w-100">
       <FontAwesomeIcon
         className="d-md-none"
         icon={faBars}
@@ -18,7 +18,7 @@ const TodoList = ({ handleSetToggled }) => {
       <ul className="list">
         {todos && todos.map((todo) => <Todo key={todo._id} todo={todo} />)}
       </ul>
-    </>
+    </div>
   );
 };
 
