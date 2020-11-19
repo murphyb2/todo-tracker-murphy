@@ -30,7 +30,12 @@ const Dashboard = ({ handleSetToggled }) => {
                   variant={item.completed ? "success" : ""}
                 >
                   {item.text}
-                  <Link to={`/todos/${item._id}`}>Edit</Link>
+                  <Link
+                    className="text-decoration-none"
+                    to={`/todos/${item._id}`}
+                  >
+                    Edit
+                  </Link>
                 </ListGroup.Item>
               ))}
             </ListGroup>
