@@ -5,10 +5,9 @@ import axios from "axios";
 // Initial state
 const initialState = {
   todos: [],
-  error: null,
-  loading: true,
   isAuthenticated: false,
   profile: {},
+  messages: [],
 };
 
 // Create context
@@ -51,16 +50,16 @@ export const GlobalProvider = ({ children }) => {
   // DELETE by id
   async function deleteTodo(id) {
     try {
-      await axios.delete(`/api/v1/todos/${id}`);
+      const res = await axios.delete(`/api/v1/todos/${id}`);
 
       dispatch({
         type: "DELETE_TODO",
-        payload: id,
+        payload: { ...res.data, id },
       });
     } catch (err) {
       dispatch({
         type: "TODO_ERROR",
-        payload: err.response.data.error,
+        payload: err.response.data,
       });
     }
   }
@@ -78,29 +77,37 @@ export const GlobalProvider = ({ children }) => {
 
       dispatch({
         type: "ADD_TODO",
-        payload: res.data.data,
+        payload: res.data,
       });
     } catch (err) {
       console.log(err);
       dispatch({
         type: "TODO_ERROR",
-        payload: err.response.data.error,
+        payload: err.response.data,
       });
     }
+  }
+
+  // Reset message
+  async function clearMessage(id) {
+    dispatch({
+      type: "CLEAR_MESSAGE",
+      payload: id,
+    });
   }
 
   return (
     <GlobalContext.Provider
       value={{
         todos: state.todos,
-        error: state.error,
-        loading: state.loading,
         isAuthenticated: state.isAuthenticated,
         profile: state.profile,
+        messages: state.messages,
         getTodos,
         deleteTodo,
         addTodo,
         getAuthState,
+        clearMessage,
       }}
     >
       {children}

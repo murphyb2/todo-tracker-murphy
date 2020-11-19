@@ -1,5 +1,10 @@
 export default (state, action) => {
   switch (action.type) {
+    case "CLEAR_MESSAGE":
+      return {
+        ...state,
+        messages: state.messages.filter((msg) => msg.id !== action.payload),
+      };
     case "GET_TODOS":
       return {
         ...state,
@@ -9,16 +14,34 @@ export default (state, action) => {
     case "DELETE_TODO":
       return {
         ...state,
-        todos: state.todos.filter((todo) => todo._id !== action.payload),
+        messages: [
+          ...state.messages,
+          {
+            success: action.payload.success,
+            message: action.payload.msg,
+            id: action.payload.id,
+          },
+        ],
+        todos: state.todos.filter((todo) => todo._id !== action.payload.id),
       };
     case "ADD_TODO":
+      console.log(action.payload);
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        messages: [
+          ...state.messages,
+          {
+            success: action.payload.success,
+            message: action.payload.msg,
+            id: action.payload.data._id,
+          },
+        ],
+        todos: [...state.todos, action.payload.data],
       };
     case "TODO_ERROR":
       return {
         ...state,
+        success: false,
         error: action.payload,
       };
     case "SET_AUTH_STATE":

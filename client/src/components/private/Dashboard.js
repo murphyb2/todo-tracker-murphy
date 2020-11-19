@@ -1,10 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Modal from "react-bootstrap/Modal";
-
-import AddTodo from "./AddTodo";
-import TodoList from "./TodoList";
 
 const Dashboard = ({ handleSetToggled }) => {
   return (
@@ -14,7 +10,7 @@ const Dashboard = ({ handleSetToggled }) => {
         icon={faBars}
         onClick={() => handleSetToggled(true)}
       />
-      <h3>Dasboard</h3>
+      <h3>At a glance...</h3>
     </div>
   );
 };

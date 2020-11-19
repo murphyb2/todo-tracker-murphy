@@ -3,12 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { GlobalContext } from "../../context/GlobalState";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 const AddTodo = ({ handleSetToggled }) => {
   const [text, setText] = useState("");
 
   const { addTodo } = useContext(GlobalContext);
 
   const onSubmit = (e) => {
+    console.log("onsubmit");
     e.preventDefault();
 
     const newTodo = {
@@ -25,19 +29,20 @@ const AddTodo = ({ handleSetToggled }) => {
         icon={faBars}
         onClick={() => handleSetToggled(true)}
       />
-      <h3>Add new todo</h3>
-      <form onSubmit={onSubmit}>
-        <div className="form-control">
-          <label htmlFor="text">Text</label>
-          <input
+      <Form className="mx-auto" onSubmit={onSubmit}>
+        <h4>Add new todo</h4>
+        <Form.Group controlId="todoText">
+          <Form.Label>New ToDo</Form.Label>
+          <Form.Control
             type="text"
+            placeholder="Enter a new ToDo..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text..."
           />
-        </div>
-        <button className="btn">Add todo</button>
-      </form>
+        </Form.Group>
+
+        <Button type="submit">Add todo</Button>
+      </Form>
     </>
   );
 };

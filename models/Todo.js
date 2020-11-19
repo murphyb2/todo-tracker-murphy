@@ -15,6 +15,10 @@ const TodoSchema = new mongoose.Schema({
     required: true,
     ref: "User",
   },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Todo", TodoSchema);

@@ -30,12 +30,14 @@ exports.addTodo = async (req, res, next) => {
     const newTodo = {
       ...req.body,
       owner: req.user.id,
+      completed: false,
     };
 
     const todo = await Todo.create(newTodo);
 
     return res.status(201).json({
       success: true,
+      msg: `Successfully added ToDo!`,
       data: todo,
     });
   } catch (err) {
@@ -44,12 +46,12 @@ exports.addTodo = async (req, res, next) => {
 
       return res.status(400).json({
         success: false,
-        error: messages,
+        msg: messages,
       });
     } else {
       return res.status(500).json({
         success: false,
-        error: "Server Error",
+        msg: "Server Error",
       });
     }
   }
@@ -65,7 +67,7 @@ exports.deleteTodo = async (req, res, next) => {
     if (!todo) {
       return res.status(404).json({
         success: false,
-        error: "No todo found",
+        msg: "No todo found",
       });
     }
 
@@ -73,12 +75,13 @@ exports.deleteTodo = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
+      msg: `Successfully deleted!`,
       data: {},
     });
   } catch (err) {
     return res.status(500).json({
       success: false,
-      error: "Server Error",
+      msg: "Server Error",
     });
   }
 };
