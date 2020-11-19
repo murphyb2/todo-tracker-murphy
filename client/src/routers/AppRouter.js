@@ -8,6 +8,7 @@ import LoginPage from "../components/LoginPage";
 import Dashboard from "../components/private/Dashboard";
 import AddTodo from "../components/private/AddTodo";
 import TodoList from "../components/private/TodoList";
+import TodoDetail from "../components/private/TodoDetail";
 
 const AppRouter = () => {
   return (
@@ -16,7 +17,8 @@ const AppRouter = () => {
         <PublicRoute path="/" exact={true} component={LoginPage} />
         <PrivateRoute path="/dashboard" exact={true} component={Dashboard} />
         <PrivateRoute path="/add" component={AddTodo} />
-        <PrivateRoute path="/todos" component={TodoList} />
+        <PrivateRoute path="/todos/:id" component={TodoDetail} />
+        {/* <PrivateRoute path="/todos" component={TodoList} /> */}
       </Switch>
     </Router>
   );

@@ -8,8 +8,8 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 export const LoginPage = () => {
   return (
     <Modal centered show>
-      <Modal.Header>
-        <Modal.Title className="text-center">Login</Modal.Title>
+      <Modal.Header className="todo-modal-header">
+        <Modal.Title className="mx-auto">Login</Modal.Title>
       </Modal.Header>
 
       <Modal.Body className="text-center">

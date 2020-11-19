@@ -1,24 +1,25 @@
-import React, { useContext, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Todo } from "../Todo";
-import { GlobalContext } from "../../context/GlobalState";
+import React from "react";
+import { Link } from "react-router-dom";
+import ListGroup from "react-bootstrap/ListGroup";
 
-const TodoList = ({ handleSetToggled }) => {
-  const { todos } = useContext(GlobalContext);
-
+const TodoList = ({ todos }) => {
   return (
-    <div className="h-100 w-100">
-      <FontAwesomeIcon
-        className="d-md-none"
-        icon={faBars}
-        onClick={() => handleSetToggled(true)}
-      />
-      <h3>Everything</h3>
-      <ul className="list">
-        {todos && todos.map((todo) => <Todo key={todo._id} todo={todo} />)}
-      </ul>
-    </div>
+    <ListGroup>
+      {todos.map((item) => (
+        <ListGroup.Item
+          key={item._id}
+          variant={item.completed ? "success" : ""}
+        >
+          {item.text}
+          <Link
+            className="text-decoration-none float-right"
+            to={`/todos/${item._id}`}
+          >
+            Edit
+          </Link>
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
   );
 };
 

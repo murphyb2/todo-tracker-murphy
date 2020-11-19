@@ -22,13 +22,15 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
 
   const headerContent = (
     <div className="d-flex flex-column justify-content-around p-3">
-      <img
-        src={profile.image}
-        alt={profile.displayName}
-        className="img-thumbnail rounded p-0 m-auto"
-      />
+      <Link to="/" className="mx-auto">
+        <img
+          src={profile.image}
+          alt={profile.displayName}
+          className="img-thumbnail rounded p-0 m-auto"
+        />
+      </Link>
       <div>
-        <h3 className="p-2 text-center">{profile.firstName}!</h3>
+        <h3 className="p-2 text-center">{profile.firstName}</h3>
       </div>
     </div>
   );
@@ -36,7 +38,7 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
   return (
     <ProSidebar toggled={toggled} onToggle={handleSetToggled} breakPoint="md">
       <SidebarHeader>{headerContent}</SidebarHeader>
-      <Menu iconShape="square">
+      <Menu iconShape="round">
         <MenuItem icon={<FontAwesomeIcon icon={faGem} />}>
           Dashboard
           <Link to="/dashboard" />
@@ -45,13 +47,13 @@ const Sidebar = ({ toggled, handleSetToggled }) => {
           Add a ToDo
           <Link to="/add" />
         </MenuItem>
-        <MenuItem icon={<FontAwesomeIcon icon={faList} />}>
+        {/* <MenuItem icon={<FontAwesomeIcon icon={faList} />}>
           All ToDos
           <Link to="/todos" />
-        </MenuItem>
+        </MenuItem> */}
       </Menu>
       <SidebarFooter>
-        <Menu iconShape="square">
+        <Menu iconShape="round">
           <MenuItem icon={<FontAwesomeIcon icon={faSignOutAlt} />}>
             <a href="/auth/logout">Logout</a>
           </MenuItem>

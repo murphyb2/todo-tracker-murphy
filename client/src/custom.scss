@@ -1,8 +1,36 @@
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
+// Colors
+$todo-primary: #855be6;
+$todo-secondary: #a5a5a5;
+
 // Custom css
 body {
   height: 100vh;
+}
+
+.bg-todo-primary {
+  background: white;
+}
+
+.todo-modal-header {
+  background-color: #855be6;
+  color: white;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+.todo-title {
+  font-weight: 900;
+}
+.todo-card-header {
+  background-color: #855be6;
+  color: white;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+.todo-card-body {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
 }
 
 // Bootstrap variable overrides
@@ -26,7 +54,13 @@ $font-family-base: // Safari for OS X and iOS (San Francisco)
   "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
 // React Pro Sidebar variable overrides
-$sidebar-bg-color: #1d1d1d !default;
+$sidebar-bg-color: $todo-primary !default;
+$sidebar-color: #ffffff !default;
+$highlight-color: #d8d8d8 !default;
+$submenu-bg-color: #2b2b2b !default;
+$submenu-bg-color-collapsed: #2b2b2b !default;
+$icon-bg-color: #a5a5a5 !default;
+$icon-size: 35px !default;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "~react-pro-sidebar/dist/scss/styles.scss";
