@@ -31,11 +31,7 @@ export const Layout = ({ children }) => {
           icon={faBars}
           onClick={() => handleSetToggled(true)}
         />
-        <Sidebar
-          // style={{ position: "absolute", left: "0", top: "0", zIndex: 0 }}
-          toggled={toggled}
-          handleSetToggled={handleSetToggled}
-        />
+        <Sidebar toggled={toggled} handleSetToggled={handleSetToggled} />
         <div className="m-3 w-100 bg-transparent">
           {React.Children.map(children, (child) => {
             // checking isValidElement is the safe way and avoids a typescript error too

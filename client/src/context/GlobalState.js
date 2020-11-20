@@ -132,7 +132,6 @@ export const GlobalProvider = ({ children }) => {
 
   // PATCH new todo
   async function editTodo(updates, id) {
-    console.log(updates);
     const config = {
       headers: {
         "Content-Type": "application/json",

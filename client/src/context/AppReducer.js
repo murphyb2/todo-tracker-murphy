@@ -40,7 +40,6 @@ export default (state, action) => {
         ),
       };
     case "EDIT_TODO":
-      console.log(action.payload);
       return {
         ...state,
         messages: [
