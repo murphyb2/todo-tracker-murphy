@@ -3,7 +3,6 @@ import { GlobalContext } from "../../context/GlobalState";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import TodoList from "./TodoList";
 
@@ -17,9 +16,9 @@ const Dashboard = () => {
     <div className="w-100 pt-3 bg-todo-primary">
       <Col>
         <h1 className="todo-title">Welcome {profile.firstName}</h1>
-        <h3>Your week at a glance...</h3>
         <div className="d-flex flex-column flex-md-row">
           <Col>
+            <h3>Your week at a glance...</h3>
             <Card className="shadow mb-3">
               <Card.Header>
                 <h5>Due Today</h5>
@@ -39,6 +38,7 @@ const Dashboard = () => {
             </Card>
           </Col>
           <Col className="h-100">
+            <h3>Your Lists</h3>
             <div className="h-100 d-flex flex-column justify-content-around">
               {todoLists.length < 1 && (
                 <Card className="shadow">
