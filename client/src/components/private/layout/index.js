@@ -15,7 +15,7 @@ export const Layout = ({ children }) => {
         style={{
           position: "relative",
           minHeight: "200px",
-          zIndex: 1,
+          zIndex: 2,
         }}
       />
       <div className="d-flex flex-row" style={{ height: "100vh" }}>
@@ -36,7 +36,7 @@ export const Layout = ({ children }) => {
           toggled={toggled}
           handleSetToggled={handleSetToggled}
         />
-        <div className="m-3 w-100">
+        <div className="m-3 w-100 bg-transparent">
           {React.Children.map(children, (child) => {
             // checking isValidElement is the safe way and avoids a typescript error too
             const props = { handleSetToggled };

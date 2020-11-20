@@ -2,13 +2,16 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 import { Link } from "react-router-dom";
 
+import DatePicker from "react-date-picker";
 import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 const AddTodo = () => {
   const [text, setText] = useState("");
   const [list, setList] = useState("");
+  const [dueDate, setDate] = useState(new Date());
   const [validated, setValidated] = useState(null);
 
   const { addTodo, todoLists } = useContext(GlobalContext);
@@ -22,6 +25,7 @@ const AddTodo = () => {
       const newTodo = {
         text,
         list,
+        dueDate,
       };
       addTodo(newTodo);
       setValidated(false);
@@ -62,6 +66,14 @@ const AddTodo = () => {
                 </option>
               ))}
             </Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Col>
+              <Form.Label>Set Due Date</Form.Label>
+              <div>
+                <DatePicker onChange={setDate} value={dueDate} />
+              </div>
+            </Col>
           </Form.Group>
 
           {!todoLists.length && (

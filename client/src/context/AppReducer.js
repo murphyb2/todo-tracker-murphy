@@ -39,6 +39,26 @@ export default (state, action) => {
           (list) => list._id !== action.payload.id
         ),
       };
+    case "EDIT_TODO":
+      console.log(action.payload);
+      return {
+        ...state,
+        messages: [
+          ...state.messages,
+          {
+            success: action.payload.success,
+            message: action.payload.msg,
+            id: action.payload.data._id,
+          },
+        ],
+        todos: state.todos.map((todo) => {
+          if (todo._id === action.payload.data._id) {
+            return action.payload.data;
+          } else {
+            return todo;
+          }
+        }),
+      };
     case "ADD_TODO":
       return {
         ...state,

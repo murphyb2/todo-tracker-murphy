@@ -130,6 +130,31 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  // PATCH new todo
+  async function editTodo(updates, id) {
+    console.log(updates);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.patch(`/api/v1/todos/${id}`, updates, config);
+
+      dispatch({
+        type: "EDIT_TODO",
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: "TODO_ERROR",
+        payload: err.response.data,
+      });
+    }
+  }
+
   // Reset message
   async function clearMessage(id) {
     dispatch({
@@ -150,6 +175,7 @@ export const GlobalProvider = ({ children }) => {
         deleteTodo,
         deleteTodoList,
         addTodo,
+        editTodo,
         addTodoList,
         getAuthState,
         clearMessage,

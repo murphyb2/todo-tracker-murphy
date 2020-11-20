@@ -10,7 +10,7 @@ import TodoList from "./TodoList";
 const Dashboard = () => {
   const { todos, todoLists, profile } = useContext(GlobalContext);
   const unfinishedTodos = todos.filter(
-    (todo) => moment().diff(todo.createdAt, "days") < 1
+    (todo) => moment(todo.dueDate).diff(moment(), "days") < 1
   );
 
   return (
@@ -31,7 +31,7 @@ const Dashboard = () => {
                     todos={todos.filter(
                       (todo) =>
                         !todo.completed &&
-                        moment().diff(todo.createdAt, "days") < 1
+                        moment(todo.dueDate).diff(moment(), "days") < 1
                     )}
                   />
                 )}

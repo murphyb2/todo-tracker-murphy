@@ -16,7 +16,7 @@ export const ToastMessages = () => {
 
   return (
     <div>
-      <div style={{ position: "absolute", top: 0, right: 0, zindex: 1 }}>
+      <div style={{ position: "absolute", top: 0, right: 0, zindex: 2 }}>
         {messages.map((msg) => (
           <Toast
             key={msg.id}
