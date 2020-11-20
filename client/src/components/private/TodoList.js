@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { GlobalContext } from "../../context/GlobalState";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, listGroup }) => {
   const { editTodo } = useContext(GlobalContext);
   const toggleCompleted = (completed, id) => {
     editTodo({ completed }, id);
@@ -25,7 +25,9 @@ const TodoList = ({ todos }) => {
           {!!todos.length &&
             todos.map((item) => (
               <ListGroup.Item
-                key={item._id}
+                key={`${listGroup ? listGroup : ""}${item._id}${
+                  item.completed ? "1" : "0"
+                }`}
                 variant={item.completed ? "success" : ""}
               >
                 <FontAwesomeIcon

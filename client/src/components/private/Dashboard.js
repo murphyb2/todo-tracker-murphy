@@ -55,6 +55,7 @@ const Dashboard = () => {
                     <Card.Body className="todo-card-body">
                       {
                         <TodoList
+                          listGroup={list._id}
                           todos={todos.filter(
                             (todo) =>
                               todo.listGroup && todo.listGroup === list._id
