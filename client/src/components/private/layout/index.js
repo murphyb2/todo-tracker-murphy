@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { ToastMessages } from "../../ToastMessages";
 import Sidebar from "./Sidebar";
-import { relativeTimeRounding } from "moment";
 
 export const Layout = ({ children }) => {
   const [toggled, setToggled] = useState(false);
