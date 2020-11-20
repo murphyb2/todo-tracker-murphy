@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCalendarCheck,
+  faCheckCircle,
   faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { GlobalContext } from "../../context/GlobalState";
 
 const TodoList = ({ todos }) => {
+  const { editTodo } = useContext(GlobalContext);
+  const toggleCompleted = (completed, id) => {
+    editTodo({ completed }, id);
+  };
   return (
     <>
       {!todos.length && (
@@ -24,11 +29,12 @@ const TodoList = ({ todos }) => {
                 variant={item.completed ? "success" : ""}
               >
                 <FontAwesomeIcon
+                  onClick={() => toggleCompleted(!item.completed, item._id)}
                   style={{
                     color: item.completed ? "green" : "red",
                   }}
                   className="mr-2"
-                  icon={item.completed ? faCalendarCheck : faExclamationCircle}
+                  icon={item.completed ? faCheckCircle : faExclamationCircle}
                 />{" "}
                 {item.text}
                 <Link
