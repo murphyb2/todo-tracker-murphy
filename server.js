@@ -27,7 +27,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       secure: false,
-      maxAge: 28800000, // in milliseconds - 8 hours
+      maxAge: 7200000, // in milliseconds - 2 hours
     },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
