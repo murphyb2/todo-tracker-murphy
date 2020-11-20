@@ -38,9 +38,6 @@ const TodoDetail = () => {
             confirmDelete={handleDelete}
             handleCancel={() => setShowConfirmDelete(false)}
           />
-          <Link to="/">
-            <Button>Go Home</Button>
-          </Link>
           <Card className="shadow">
             <Card.Header>
               <h1>{todo.text}</h1>
@@ -62,7 +59,7 @@ const TodoDetail = () => {
             </Card.Body>
             <Card.Footer className="bg-secondary text-center">
               <Card.Title>Actions</Card.Title>
-              <ButtonGroup>
+              <ButtonGroup className="mx-auto">
                 <Button>Edit</Button>
                 <Button
                   onClick={() => setShowConfirmDelete(true)}

@@ -62,10 +62,12 @@ exports.addTodoList = async (req, res, next) => {
 // @access  Public
 exports.addTodo = async (req, res, next) => {
   try {
+    console.log("addtodo body", req.body);
     const newTodo = {
       ...req.body,
       owner: req.user.id,
       completed: false,
+      listGroup: req.body.list,
     };
 
     const todo = await Todo.create(newTodo);

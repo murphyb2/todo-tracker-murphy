@@ -9,17 +9,18 @@ const Dashboard = () => {
   const { todos, profile } = useContext(GlobalContext);
   const unfinishedTodos = todos.filter((todo) => todo.completed !== true);
   return (
-    <div className="w-100 p-3 bg-todo-primary" style={{ overflow: "auto" }}>
+    <div className="w-100 pt-3 bg-todo-primary">
       <Col>
         <h1 className="todo-title">Welcome {profile.firstName}</h1>
         <h3>Your week at a glance...</h3>
-        <Row>
+        <div className="d-flex flex-column flex-md-row">
           <Col>
             <Card className="shadow">
               <Card.Header>
                 <h5>Due Today</h5>
               </Card.Header>
               <Card.Body className="todo-card-body">
+                {!unfinishedTodos.length && <h6>You're all caught up!</h6>}
                 <TodoList todos={unfinishedTodos} />
               </Card.Body>
             </Card>
@@ -40,7 +41,7 @@ const Dashboard = () => {
               </Card>
             </div>
           </Col>
-        </Row>
+        </div>
       </Col>
     </div>
   );

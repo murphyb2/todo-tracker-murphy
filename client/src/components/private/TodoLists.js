@@ -26,10 +26,10 @@ const TodoLists = () => {
   return (
     <Container className="h-100 w-100">
       <h1 className="mt-3">ToDo Lists</h1>
-      {!todoLists && (
+      {!todoLists.length && (
         <h4 className="text-center mt-3">You haven't created any lists yet!</h4>
       )}
-      {!!todoLists && (
+      {!!todoLists.length && (
         <>
           <ListGroup>
             {todoLists.map((list) => (

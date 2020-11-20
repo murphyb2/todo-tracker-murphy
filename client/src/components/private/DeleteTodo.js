@@ -7,7 +7,7 @@ const DeleteTodo = ({ show, handleCancel, confirmDelete }) => {
     <Modal show={show} onHide={handleCancel}>
       <Modal.Header>Are you sure you want to delete this todo?</Modal.Header>
       <Modal.Body>
-        <ButtonGroup>
+        <ButtonGroup className="mx-auto">
           <Button variant="danger" onClick={confirmDelete}>
             Yes
           </Button>

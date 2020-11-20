@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { ToastMessages } from "../../ToastMessages";
 import Sidebar from "./Sidebar";
+import { relativeTimeRounding } from "moment";
 
 export const Layout = ({ children }) => {
   const [toggled, setToggled] = useState(false);
@@ -15,14 +16,14 @@ export const Layout = ({ children }) => {
         style={{
           position: "relative",
           minHeight: "200px",
-          zindex: "1",
+          zIndex: 1,
         }}
       />
       <div className="d-flex flex-row" style={{ height: "100vh" }}>
         <FontAwesomeIcon
           style={{
             position: "absolute",
-            zindex: "-1",
+            zIndex: 1,
             left: "0",
             top: "0",
           }}
@@ -32,11 +33,11 @@ export const Layout = ({ children }) => {
           onClick={() => handleSetToggled(true)}
         />
         <Sidebar
-          style={{ position: "absolute", left: "0", top: "0", zindex: "1" }}
+          // style={{ position: "absolute", left: "0", top: "0", zIndex: 0 }}
           toggled={toggled}
           handleSetToggled={handleSetToggled}
         />
-        <div className="m-3 h-100 w-100">
+        <div className="m-3 w-100">
           {React.Children.map(children, (child) => {
             // checking isValidElement is the safe way and avoids a typescript error too
             const props = { handleSetToggled };
