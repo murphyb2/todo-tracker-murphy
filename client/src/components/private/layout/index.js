@@ -11,13 +11,6 @@ export const Layout = ({ children }) => {
 
   return (
     <>
-      <ToastMessages
-        style={{
-          position: "relative",
-          minHeight: "200px",
-          zIndex: 2,
-        }}
-      />
       <div className="d-flex flex-row" style={{ height: "100vh" }}>
         <FontAwesomeIcon
           style={{
@@ -32,7 +25,13 @@ export const Layout = ({ children }) => {
           onClick={() => handleSetToggled(true)}
         />
         <Sidebar toggled={toggled} handleSetToggled={handleSetToggled} />
-        <div className="m-3 w-100 bg-transparent">
+        <div
+          className="m-3 w-100 bg-transparent"
+          style={{
+            position: "relative",
+            zIndex: 0,
+          }}
+        >
           {React.Children.map(children, (child) => {
             // checking isValidElement is the safe way and avoids a typescript error too
             const props = { handleSetToggled };
@@ -43,6 +42,13 @@ export const Layout = ({ children }) => {
           })}
         </div>
       </div>
+      <ToastMessages
+        style={{
+          position: "relative",
+          minHeight: "200px",
+          zIndex: 1,
+        }}
+      />
     </>
   );
 };

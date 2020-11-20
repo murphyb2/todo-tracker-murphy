@@ -129,10 +129,7 @@ const TodoDetail = () => {
     </ListGroup>
   );
   return (
-    <Container
-      className="h-100 w-100 pt-3"
-      style={{ postition: "relative", zIndex: -1 }}
-    >
+    <Container className="h-100 w-100 pt-3">
       {!!!todo && (
         <h5 className="text-center mt-3">Hmm.. can't find that todo</h5>
       )}
